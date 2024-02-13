@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+#url=$(curl 'https://discord.com/api/download/stable?platform=linux&format=tar.gz' 2>/dev/null | grep -E -o "=\".*\"" | cut -c2-)
+
+curl -L 'https://discord.com/api/download/stable?platform=linux&format=tar.gz' --output /tmp/disctar.tar.gz
+tar -xvf /tmp/disctar.tar.gz -C /tmp
+sudo rm -rf /opt/Discord
+sudo cp -r /tmp/Discord /opt/Discord/
+sudo ln -sf /opt/Discord/Discord /usr/bin/discord
+sudo ln -sf /opt/Discord/discord.desktop /usr/share/applications/discord.desktop
