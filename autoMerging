@@ -1,0 +1,12 @@
+#!/bin/bash
+# Indenting the heads
+# files=$(find . -name "*.md" | sed "s/\.\//\"\.\//" | sed "s/\.md/\.md\"/")
+folders=$(ls -l | cut -f9)
+# echo $files
+for file in $files; do
+	echo $file \;
+done
+
+# H1 at before each file with the file name without the extension
+
+# Merging the files

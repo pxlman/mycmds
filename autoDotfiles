@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# To Enable the !() feature
+shopt -s extglob
+# Making .dotfiles dir
+mkdir -p ~/.dotfiles/.config
+
+# Copying the configs to .dotfiles
+cp -rf ~/{.conky,.mozilla,.myapps,.mycmds,.oh-my-zsh} ~/.dotfiles/
+cp -rf ~/.config/{bspwm,conky,i3,kitty,legendary,lf,nitrogen,nnn,nvim,nvim1.bak,obs-studio,picom,polybar,qtile,ranger,rofi,scripts,sxhkd,syncthing,tmux,zathura} ~/.dotfiles/.config/
+# Making symbolic link for each file in .dotfiles in home
+mkdir -p /tmp/.config && ln -sf ~/.dotfiles/.config/* /tmp/.config/
+ln -sf ~/.dotfiles/!(\.config) /tmp/
+
