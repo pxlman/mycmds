@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # Indenting the heads
 # files=$(find . -name "*.md" | sed "s/\.\//\"\.\//" | sed "s/\.md/\.md\"/")
 folders=$(ls -l | cut -f9)
