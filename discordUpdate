@@ -2,10 +2,16 @@
 
 
 #url=$(curl 'https://discord.com/api/download/stable?platform=linux&format=tar.gz' 2>/dev/null | grep -E -o "=\".*\"" | cut -c2-)
-
+# Following the redirecting download link
 curl -L 'https://discord.com/api/download/stable?platform=linux&format=tar.gz' --output /tmp/disctar.tar.gz
+# Extracting the tar.gz
 tar -xvf /tmp/disctar.tar.gz -C /tmp
+# Any grade 3 kid can read this
 sudo rm -rf /opt/Discord
 sudo cp -r /tmp/Discord /opt/Discord/
-sudo ln -sf /opt/Discord/Discord /usr/bin/discord
+sudo ln -sf /opt/Discord/Discord /sbin/discord
 sudo ln -sf /opt/Discord/discord.desktop /usr/share/applications/discord.desktop
+# Replacing old exec line in the .desktop with the new one
+sed -i "s@Exec=.*@Exec=/opt/Discord/Discord@g" /usr/share/applications/discord.desktop
+# This code works for it may not for u
+# Just edit it to be good for u
