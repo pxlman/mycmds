@@ -9,5 +9,5 @@ mkdir -p ~/.dotfiles/.config
 cp -rf ~/{.conky,.mozilla,.myapps,.mycmds,.oh-my-zsh,.xinitrc} ~/.dotfiles/
 cp -rf ~/.config/{bspwm,conky,i3,kitty,legendary,lf,nitrogen,nnn,nvim,nvim1.bak,obs-studio,picom,polybar,qtile,ranger,rofi,scripts,sxhkd,syncthing,tmux,zathura} ~/.dotfiles/.config/
 # Making symbolic link for each file in .dotfiles in home
-mkdir -p /tmp/.config && ln -sf ~/.dotfiles/.config/* /tmp/.config/
-ln -sf ~/.dotfiles/!(\.config) /tmp/
+mkdir -p ~/.config && ln -sf ~/.dotfiles/.config/* ~/.config/
+ln -sf ~/.dotfiles/!(\.config) ~/
