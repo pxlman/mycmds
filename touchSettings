@@ -1,0 +1,6 @@
+#!/bin/bash
+touchPadId=`xinput list | grep Touch | grep -o "id=[0-9]*" | cut -c4-`
+scrollingId=`xinput list-props $touchPadId | grep "Natural Scrolling Enabled (" | grep -o "([0-9]*)" | sed "s/[\(|\)]//g"`
+tappingId=`xinput list-props $touchPadId | grep "Tapping Enabled (" | grep -o "([0-9]*)" | sed "s/[\(|\)]//g"`
+xinput set-prop $touchPadId $scrollingId 1
+xinput set-prop $touchPadId $tappingId 1
