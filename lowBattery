@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+while [[ True ]]; do
+	
+	if [[ `$HOME/.mycmds/battery | sed "s/%//g"` -le 20 ]]; then
+		notify-send "Low Battery @_@" "Battery is $($HOME/.mycmds/battery)"
+	fi
+	sleep 200
+done
