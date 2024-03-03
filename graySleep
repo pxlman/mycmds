@@ -4,8 +4,7 @@
 hour="date +%H"
 while [[ True ]]; do
 	if [[ $($hour) -ge 22 ]] || [[ $($hour) -le 2 ]]; then
-		echo $($hour)
-		#xgamma -rgamma 10 -ggamma 4 -bgamma 1.5
+		xgamma -rgamma 10 -ggamma 4 -bgamma 1.5
 	else
 		xgamma -gamma 1
 	fi
