@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#hour="date | cut -d' ' -f5 | cut -d':' -f1"
+hour="date +%H"
+while [[ True ]]; do
+	if [[ $($hour) -ge 22 ]] || [[ $($hour) -le 2 ]]; then
+		echo $($hour)
+		#xgamma -rgamma 10 -ggamma 4 -bgamma 1.5
+	else
+		xgamma -gamma 1
+	fi
+	sleep 200
+done
