@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# You can use `./saw& ; disown` to make it work in the background
+# You can add this line to ~/.xinitrc to make it work by default
+# If u use any DE you can add it automatically by entering the settings and try to find startup apps or commands
+
+
 while [[ True ]]; do
 	notify-send "صلي على الحبيب   " -t 2500
 	sleep 350
