@@ -6,7 +6,7 @@
 
 
 while [[ True ]]; do
-	notify-send "صلي على الحبيب   " -t 2500
+	notify-send "صلِ على الحبيب   " -t 2500
 	sleep 350
 	notify-send "اذكر الله   " -t 2500
 	sleep 350
