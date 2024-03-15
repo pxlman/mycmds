@@ -7,7 +7,6 @@ while [[ True ]]; do
 	
 	if [[ $($charge) -le 20 ]] && [[ $($state) = "discharging" ]]; then
 		notify-send "Low Battery @_@" "Battery is $($HOME/.mycmds/battery)"
-	#	notified+=($($charge))
 	fi
 	sleep 200
 done
