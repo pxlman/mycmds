@@ -1,12 +1,11 @@
 #!/bin/bash
 
-charge="$HOME/.mycmds/battery | sed 's/%//g'"
-state="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | cut -d ' ' -f 20"
-notified=()
+charge="$($HOME/.mycmds/battery | rev | cut -c2- | rev)"
+state="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | cut -d ' ' -f 20)"
 while [[ True ]]; do
 	
-	if [[ $($charge) -le 20 ]] && [[ $($state) = "discharging" ]]; then
-		notify-send "Low Battery @_@" "Battery is $($HOME/.mycmds/battery)"
+	if [[ $charge -le 20 ]] && [[ $state = "discharging" ]]; then
+		notify-send "Low Battery @_@" "Battery is $charge%"
 	fi
 	sleep 200
 done

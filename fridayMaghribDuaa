@@ -4,7 +4,7 @@ wday="date +'%w'"
 hour="date +'%H'"
 mahgrib="$HOME/.mycmds/nsalah maghrib | cut -d':' -f1"
 
-while [[ $(( $($maghrib) - $($hour) )) -le 1 ]] && [[ $($wday) -e 5 ]]; do
+while [[ $(( $($maghrib) - $($hour) )) -le 1 ]] && [[ $($wday) -eq 5 ]]; do
 	notify-send "لا تهمل دعاء ساعة مغرب الجمعة  " -t 10000
 	sleep $(( 60 * 5 ))
 done

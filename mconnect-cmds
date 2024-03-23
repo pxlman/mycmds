@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Sharing clipboard with phone
+clip=`xclip -o`; mconnectctl share-text /org/mconnect/device/0 $clip
+

@@ -3,8 +3,10 @@ set -e
 
 #url=$(curl 'https://discord.com/api/download/stable?platform=linux&format=tar.gz' 2>/dev/null | grep -E -o "=\".*\"" | cut -c2-)
 # Following the redirecting download link
+[[ -f /tmp/disctar.tar.gz ]] && rm /tmp/disctar.tar.gz
 curl -L 'https://discord.com/api/download/stable?platform=linux&format=tar.gz' --output /tmp/disctar.tar.gz
 # Extracting the tar.gz
+[[ -f /tmp/Discord ]] && sudo rm -rf /tmp/Discord
 tar -xvf /tmp/disctar.tar.gz -C /tmp
 # Any grade 3 kid can read this
 sudo rm -rf /opt/Discord
