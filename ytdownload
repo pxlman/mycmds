@@ -1,7 +1,8 @@
 #!/usr/bin/python
 import subprocess as sp
+import sys
 
-link = "https://youtu.be/U4Ex8lGkBaM"
+link = sys.argv[1]
 yt = "yt-dlp"
 try:
     allFormats = sp.run(f"{yt} -F {link}", text=True, capture_output=True,shell=True).stdout
@@ -10,7 +11,6 @@ try:
     formats360 = sp.run(f"echo '{allFormats}' | grep 'video only'| grep 640x360 | grep 'https' | cut -d' ' -f 1",text=True,shell=True,capture_output=True).stdout.split()
     formats720 = sp.run(f"echo '{allFormats}' | grep 'video only'| grep 1280x720 | grep 'https' | cut -d' ' -f 1",text=True,shell=True,capture_output=True).stdout.split()
     audioFormats = sp.run(f"echo '{allFormats}' | grep 'audio only' | grep ' m4a ' | grep 'https' | grep -v 'DRC' | cut -d' ' -f 1",text=True,shell=True,capture_output=True).stdout.split('\n')
-    print(formats720)
     if formats720 and audioFormats:
         sp.run(f"{yt} -f{formats720[0]}+{audioFormats[0]} {link}",shell=True)
     elif formats480 and audioFormats:
