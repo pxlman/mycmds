@@ -1,0 +1,25 @@
+#!/usr/bin/python
+import subprocess as sp
+
+link = "https://youtu.be/U4Ex8lGkBaM"
+yt = "yt-dlp"
+try:
+    allFormats = sp.run(f"{yt} -F {link}", text=True, capture_output=True,shell=True).stdout
+
+    formats480 = sp.run(f"echo '{allFormats}' | grep 'video only'| grep 854x480 | grep 'https' | cut -d' ' -f 1",text=True,shell=True,capture_output=True).stdout.split()
+    formats360 = sp.run(f"echo '{allFormats}' | grep 'video only'| grep 640x360 | grep 'https' | cut -d' ' -f 1",text=True,shell=True,capture_output=True).stdout.split()
+    formats720 = sp.run(f"echo '{allFormats}' | grep 'video only'| grep 1280x720 | grep 'https' | cut -d' ' -f 1",text=True,shell=True,capture_output=True).stdout.split()
+    audioFormats = sp.run(f"echo '{allFormats}' | grep 'audio only' | grep ' m4a ' | grep 'https' | grep -v 'DRC' | cut -d' ' -f 1",text=True,shell=True,capture_output=True).stdout.split('\n')
+    print(formats720)
+    if formats720 and audioFormats:
+        sp.run(f"{yt} -f{formats720[0]}+{audioFormats[0]} {link}",shell=True)
+    elif formats480 and audioFormats:
+        sp.run(f"{yt} -f{formats480[0]}+{audioFormats[0]} {link}",shell=True)
+        # print(f"{formats480[0]}+{audioFormats[0]} {link}",)
+    elif formats360 and audioFormats:
+        sp.run(f"{yt} -f{formats360[0]}+{audioFormats[0]} {link}",shell=True)
+    else:
+        print("I think an error occured :\\")
+except:
+    print("Error")
+
